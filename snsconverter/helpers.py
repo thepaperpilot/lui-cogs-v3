@@ -149,7 +149,7 @@ def urls_to_string(links: list[str], socialMedia: SocialMedia, author: str):
     """
     return "\n".join(
         [
-            f"{author}'s {socialMedia.value} embeds:*",
+            f"*{author}'s {socialMedia.value} embeds:*",
             *links,
         ]
     )
