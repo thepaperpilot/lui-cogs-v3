@@ -44,8 +44,7 @@ class EventsCore(Core):
                 await message.delete()
         else:
             # constructs the message and replies with a mention
-            ok = await message.reply(message.content)
-            ok = await message.reply(message.embeds[0].url)
+            ok = await message.reply(urls_to_string(ddinsta_urls, SocialMedia.INSTAGRAM))
     
             # Remove embeds from user message if reply is successful
             if ok:
@@ -113,8 +112,20 @@ class EventsCore(Core):
         if not fx_twtter_urls:
             return
 
-        # constructs the message and replies with a mention
-        await message.reply(urls_to_string(fx_twtter_urls, SocialMedia.TWITTER))
+        if message.content == message.embeds[0].url:
+            # constructs the message and replies with a mention
+            ok = await message.channel.send(urls_to_string(fx_twtter_urls, SocialMedia.TWITTER), silent=True)
+    
+            # Remove embeds from user message if reply is successful
+            if ok:
+                await message.delete()
+        else:
+            # constructs the message and replies with a mention
+            ok = await message.reply(urls_to_string(fx_twtter_urls, SocialMedia.TWITTER))
+    
+            # Remove embeds from user message if reply is successful
+            if ok:
+                await message.edit(suppress=True)
 
     async def _on_edit_twit_replacer(
         self, message_before: Message, message_after: Message
@@ -162,12 +173,20 @@ class EventsCore(Core):
         if not vx_tiktok_urls:
             return
 
-        # constructs the message and replies with a mention
-        ok = await message.reply(urls_to_string(vx_tiktok_urls, SocialMedia.TIKTOK))
-
-        # Remove embeds from user message if reply is successful
-        if ok:
-            await message.edit(suppress=True)
+        if message.content == message.embeds[0].url:
+            # constructs the message and replies with a mention
+            ok = await message.channel.send(urls_to_string(vx_tiktok_urls, SocialMedia.TIKTOK), silent=True)
+    
+            # Remove embeds from user message if reply is successful
+            if ok:
+                await message.delete()
+        else:
+            # constructs the message and replies with a mention
+            ok = await message.reply(urls_to_string(vx_tiktok_urls, SocialMedia.TIKTOK))
+    
+            # Remove embeds from user message if reply is successful
+            if ok:
+                await message.edit(suppress=True)
 
     async def _on_edit_tik_replacer(self, payload: RawMessageUpdateEvent):
         # skips if the message is sent by any bot
@@ -235,12 +254,20 @@ class EventsCore(Core):
         if not rxddit_urls:
             return
 
-        # constructs the message and replies with a mention
-        ok = await message.reply(urls_to_string(rxddit_urls, SocialMedia.REDDIT))
-
-        # Remove embeds from user message if reply is successful
-        if ok:
-            await message.edit(suppress=True)
+        if message.content == message.embeds[0].url:
+            # constructs the message and replies with a mention
+            ok = await message.channel.send(urls_to_string(rxddit_urls, SocialMedia.REDDIT), silent=True)
+    
+            # Remove embeds from user message if reply is successful
+            if ok:
+                await message.delete()
+        else:
+            # constructs the message and replies with a mention
+            ok = await message.reply(urls_to_string(rxddit_urls, SocialMedia.REDDIT))
+    
+            # Remove embeds from user message if reply is successful
+            if ok:
+                await message.edit(suppress=True)
 
     async def _on_edit_reddit_replacer(self, payload: RawMessageUpdateEvent):
         # skips if the message is sent by any bot
@@ -308,12 +335,20 @@ class EventsCore(Core):
         if not vx_threads_urls:
             return
 
-        # constructs the message and replies with a mention
-        ok = await message.reply(urls_to_string(vx_threads_urls, SocialMedia.THREADS))
-
-        # Remove embeds from user message if reply is successful
-        if ok:
-            await message.edit(suppress=True)
+        if message.content == message.embeds[0].url:
+            # constructs the message and replies with a mention
+            ok = await message.channel.send(urls_to_string(vx_threads_urls, SocialMedia.THREADS), silent=True)
+    
+            # Remove embeds from user message if reply is successful
+            if ok:
+                await message.delete()
+        else:
+            # constructs the message and replies with a mention
+            ok = await message.reply(urls_to_string(vx_threads_urls, SocialMedia.THREADS))
+    
+            # Remove embeds from user message if reply is successful
+            if ok:
+                await message.edit(suppress=True)
 
     async def _on_edit_threads_replacer(self, payload: RawMessageUpdateEvent):
         # skips if the message is sent by any bot
