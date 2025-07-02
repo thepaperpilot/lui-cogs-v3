@@ -134,7 +134,7 @@ def convert_to_vx_threads_url(embeds: list[Embed]):
     return vxthreads_urls
 
 
-def urls_to_string(links: list[str], socialMedia: SocialMedia):
+def urls_to_string(links: list[str], socialMedia: SocialMedia, author: str):
     """
     Parameters
     ----------
@@ -149,8 +149,7 @@ def urls_to_string(links: list[str], socialMedia: SocialMedia):
     """
     return "\n".join(
         [
-            "OwO what's this?",
-            f"*fixes your {socialMedia.value} embeds:*",
+            f"{author}'s {socialMedia.value} embeds:*",
             *links,
         ]
     )
