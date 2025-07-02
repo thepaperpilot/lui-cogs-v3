@@ -37,14 +37,14 @@ class EventsCore(Core):
 
         if message.content == message.embeds[0].url:
             # constructs the message and replies with a mention
-            ok = await message.channel.send(urls_to_string(ddinsta_urls, SocialMedia.INSTAGRAM), silent=True)
+            ok = await message.channel.send(urls_to_string(ddinsta_urls, SocialMedia.INSTAGRAM, message.author.mention), silent=True)
     
             # Remove embeds from user message if reply is successful
             if ok:
                 await message.delete()
         else:
             # constructs the message and replies with a mention
-            ok = await message.reply(urls_to_string(ddinsta_urls, SocialMedia.INSTAGRAM))
+            ok = await message.reply(urls_to_string(ddinsta_urls, SocialMedia.INSTAGRAM, message.author.mention))
     
             # Remove embeds from user message if reply is successful
             if ok:
@@ -86,7 +86,7 @@ class EventsCore(Core):
 
         # constructs the message and replies with a mention
         ok = await payload.cached_message.reply(
-            urls_to_string(ddinsta_urls, SocialMedia.INSTAGRAM)
+            urls_to_string(ddinsta_urls, SocialMedia.INSTAGRAM, payload.cached_message.author.mention)
         )
 
         # Remove embeds from user message if reply is successful
@@ -114,14 +114,14 @@ class EventsCore(Core):
 
         if message.content == message.embeds[0].url:
             # constructs the message and replies with a mention
-            ok = await message.channel.send(urls_to_string(fx_twtter_urls, SocialMedia.TWITTER), silent=True)
+            ok = await message.channel.send(urls_to_string(fx_twtter_urls, SocialMedia.TWITTER, message.author.mention), silent=True)
     
             # Remove embeds from user message if reply is successful
             if ok:
                 await message.delete()
         else:
             # constructs the message and replies with a mention
-            ok = await message.reply(urls_to_string(fx_twtter_urls, SocialMedia.TWITTER))
+            ok = await message.reply(urls_to_string(fx_twtter_urls, SocialMedia.TWITTER, message.author.mention))
     
             # Remove embeds from user message if reply is successful
             if ok:
@@ -149,7 +149,7 @@ class EventsCore(Core):
             return
 
         # constructs the message and replies with a mention
-        await message_after.reply(urls_to_string(fx_twtter_urls, SocialMedia.TWITTER))
+        await message_after.reply(urls_to_string(fx_twtter_urls, SocialMedia.TWITTER, message_after.author.mention))
 
     async def _on_message_tik_replacer(self, message: Message):
         if not valid(message):
@@ -175,14 +175,14 @@ class EventsCore(Core):
 
         if message.content == message.embeds[0].url:
             # constructs the message and replies with a mention
-            ok = await message.channel.send(urls_to_string(vx_tiktok_urls, SocialMedia.TIKTOK), silent=True)
+            ok = await message.channel.send(urls_to_string(vx_tiktok_urls, SocialMedia.TIKTOK, message.author.mention), silent=True)
     
             # Remove embeds from user message if reply is successful
             if ok:
                 await message.delete()
         else:
             # constructs the message and replies with a mention
-            ok = await message.reply(urls_to_string(vx_tiktok_urls, SocialMedia.TIKTOK))
+            ok = await message.reply(urls_to_string(vx_tiktok_urls, SocialMedia.TIKTOK, message.author.mention))
     
             # Remove embeds from user message if reply is successful
             if ok:
@@ -225,7 +225,7 @@ class EventsCore(Core):
 
         # constructs the message and replies with a mention
         ok = await payload.cached_message.reply(
-            urls_to_string(vx_tiktok_urls, SocialMedia.TIKTOK)
+            urls_to_string(vx_tiktok_urls, SocialMedia.TIKTOK, payload.cached_message.author.mention)
         )
 
         # Remove embeds from user message if reply is successful
@@ -256,14 +256,14 @@ class EventsCore(Core):
 
         if message.content == message.embeds[0].url:
             # constructs the message and replies with a mention
-            ok = await message.channel.send(urls_to_string(rxddit_urls, SocialMedia.REDDIT), silent=True)
+            ok = await message.channel.send(urls_to_string(rxddit_urls, SocialMedia.REDDIT, message.author.mention), silent=True)
     
             # Remove embeds from user message if reply is successful
             if ok:
                 await message.delete()
         else:
             # constructs the message and replies with a mention
-            ok = await message.reply(urls_to_string(rxddit_urls, SocialMedia.REDDIT))
+            ok = await message.reply(urls_to_string(rxddit_urls, SocialMedia.REDDIT, message.author.mention))
     
             # Remove embeds from user message if reply is successful
             if ok:
@@ -306,7 +306,7 @@ class EventsCore(Core):
 
         # constructs the message and replies with a mention
         ok = await payload.cached_message.reply(
-            urls_to_string(rxddit_urls, SocialMedia.REDDIT)
+            urls_to_string(rxddit_urls, SocialMedia.REDDIT, payload.cached_message.author.mention)
         )
 
         # Remove embeds from user message if reply is successful
@@ -337,14 +337,14 @@ class EventsCore(Core):
 
         if message.content == message.embeds[0].url:
             # constructs the message and replies with a mention
-            ok = await message.channel.send(urls_to_string(vx_threads_urls, SocialMedia.THREADS), silent=True)
+            ok = await message.channel.send(urls_to_string(vx_threads_urls, SocialMedia.THREADS, message.author.mention), silent=True)
     
             # Remove embeds from user message if reply is successful
             if ok:
                 await message.delete()
         else:
             # constructs the message and replies with a mention
-            ok = await message.reply(urls_to_string(vx_threads_urls, SocialMedia.THREADS))
+            ok = await message.reply(urls_to_string(vx_threads_urls, SocialMedia.THREADS, message.author.mention))
     
             # Remove embeds from user message if reply is successful
             if ok:
@@ -387,7 +387,7 @@ class EventsCore(Core):
 
         # constructs the message and replies with a mention
         ok = await payload.cached_message.reply(
-            urls_to_string(vx_threads_urls, SocialMedia.THREADS)
+            urls_to_string(vx_threads_urls, SocialMedia.THREADS, payload.cached_message.author.mention)
         )
 
         # Remove embeds from user message if reply is successful
