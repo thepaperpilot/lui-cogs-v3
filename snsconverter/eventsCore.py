@@ -35,12 +35,21 @@ class EventsCore(Core):
         if not ddinsta_urls:
             return
 
-        # constructs the message and replies with a mention
-        ok = await message.reply(urls_to_string(ddinsta_urls, SocialMedia.INSTAGRAM))
+        if message.content == message.embeds[0].url:
+            # constructs the message and replies with a mention
+            ok = await message.channel.send(urls_to_string(ddinsta_urls, SocialMedia.INSTAGRAM), silent=True)
+    
+            # Remove embeds from user message if reply is successful
+            if ok:
+                await message.delete()
+        else:
+            # constructs the message and replies with a mention
+            ok = await message.reply(urls_to_string(ddinsta_urls, SocialMedia.INSTAGRAM))
+    
+            # Remove embeds from user message if reply is successful
+            if ok:
+                await message.edit(suppress=True)
 
-        # Remove embeds from user message if reply is successful
-        if ok:
-            await message.edit(suppress=True)
 
     async def _on_edit_insta_replacer(self, payload: RawMessageUpdateEvent):
         if not valid(payload.cached_message):
